@@ -4,7 +4,6 @@
 	right: 4rem;
 	display: flex;
 	flex-direction: column;
-	align-items: end;
 }
 .login_wrapper {
 	background-color: #fff;
@@ -80,10 +79,4 @@
 .login_btn > p {
 	margin-top: 5px;
 	text-align: center;
-}
-
-.login_btn a {
-	cursor: pointer;
-	color: blue;
-	text-decoration: none;
 }

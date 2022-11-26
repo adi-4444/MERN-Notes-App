@@ -12,7 +12,7 @@ function Signup({ setAuth }) {
     console.log({ name: name, email: email, password: password })
   }
   return (
-    <div className='signup-body'>
+    <div className='signup-body items-end'>
       <div className="signup-wrapper">
 
         <div className="signup-form-group">
@@ -51,7 +51,7 @@ function Signup({ setAuth }) {
 
             <div className="signup-btn">
               <input type='submit' value='Signup' />
-              <p>Already have an account ? <a href='/#' onClick={() => setAuth("login")}>Login</a></p>
+              <p>Already have an account ? <span className='text-blue-900 font-semibold cursor-pointer' onClick={() => setAuth("login")}>Login</span></p>
             </div>
           </form>
         </div>
