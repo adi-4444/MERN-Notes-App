@@ -1,9 +1,11 @@
 import './App.css';
+import AllRoutes from './components/pages/AllRoutes';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>MERN Notes App</h1>
+    <div>
+      <AllRoutes />
     </div>
   );
 }
