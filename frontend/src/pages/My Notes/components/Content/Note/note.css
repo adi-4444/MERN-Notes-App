@@ -16,6 +16,7 @@
 	height: 250px;
 	overflow: scroll;
 	overflow-x: hidden;
+	word-wrap: break-word;
 }
 .icons {
 	margin-top: 10px;
@@ -49,9 +50,7 @@
 ::-webkit-scrollbar {
 	width: 5px;
 }
-::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
+
 ::-webkit-scrollbar-thumb {
 	background: #6f6be0;
 }
