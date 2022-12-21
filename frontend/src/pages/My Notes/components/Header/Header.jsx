@@ -6,7 +6,7 @@ import "./header.css";
 const Header = () => {
 	return (
 		<div>
-			<div class='navbar-wrapper w-full flex items-center p-2 justify-around shadow-xs'>
+			<div className='navbar-wrapper w-full flex items-center p-2 justify-around shadow-xs'>
 				<a
 					href='/mynotes'
 					className='flex items-center gap-2 ml-8 text-2xl font-semibold text-yellow-300 md:flex'
@@ -16,34 +16,34 @@ const Header = () => {
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
 						viewBox='0 0 24 24'
-						stroke-width='1.5'
+						strokeWidth='1.5'
 						stroke='currentColor'
-						class='w-8 h-8'
+						className='w-8 h-8'
 					>
 						<path
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 							d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125'
 						/>
 					</svg>
 				</a>
 
-				<span class='w-full md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex'>
+				<span className='w-full md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex'>
 					<input
 						type='search'
 						name='serch'
 						placeholder='Search'
-						class='flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none'
+						className='flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none'
 					/>
 				</span>
 
-				<div class='flex flex-row-reverse text-white mr-4 ml-4 md:hidden'>
+				<div className='flex flex-row-reverse text-white mr-4 ml-4 md:hidden'>
 					<button>
 						<svg
 							width='20'
 							height='20'
 							fill='currentColor'
-							class='h-8 w-8'
+							className='h-8 w-8'
 							viewBox='0 0 1792 1792'
 							xmlns='http://www.w3.org/2000/svg'
 						>
@@ -52,10 +52,10 @@ const Header = () => {
 					</button>
 				</div>
 
-				<div class='flex items-center gap-8 mr-5 md:flex'>
+				<div className='flex items-center gap-8 mr-5 md:flex'>
 					<a
 						href='/mynotes'
-						class='ml-8 mr-8 text-lg text-white hidden md:flex'
+						className='ml-8 mr-8 text-lg text-white hidden md:flex'
 					>
 						My Notes
 					</a>
@@ -72,12 +72,12 @@ const Header = () => {
 									fill='none'
 									className='mr-2 w-8 h-8 text-white hover:text-gray-100 dropicon'
 									viewBox='0 0 24 24'
-									stroke-width='1.5'
+									strokeWidth='1.5'
 									stroke='currentColor'
 								>
 									<path
-										stroke-linecap='round'
-										stroke-linejoin='round'
+										strokeLinecap='round'
+										strokeLinejoin='round'
 										d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z'
 									/>
 								</svg>

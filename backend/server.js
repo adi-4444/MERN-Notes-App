@@ -3,13 +3,17 @@ const notes = require("./data/notes")
 const dotenv = require("dotenv")
 const connectDB = require("./config/db")
 const userRoutes = require("./routes/userRoutes")
+const cors = require("cors")
+
 
 
 const app = express()
 dotenv.config()
 connectDB()
 
-
+app.use(cors({
+   origin: "http://localhost:3000",
+}))
 
 app.get("/", (req, res) => {
    res.send("API is Runnging")
