@@ -18,6 +18,7 @@ function Login({ setAuth }) {
     }
     setErrorMessage("");
   };
+
   const loginHandler = async (e) => {
     e.preventDefault()
     const inputData = { email, password }
