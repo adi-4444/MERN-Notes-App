@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-
+import { logout } from "../../../../common/utils/helpers";
 import "./header.css";
 
 const Header = () => {
@@ -115,6 +115,7 @@ const Header = () => {
 														? "bg-violet-500 text-white"
 														: "text-gray-900"
 												} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+												onClick={logout}
 											>
 												Log Out
 											</button>

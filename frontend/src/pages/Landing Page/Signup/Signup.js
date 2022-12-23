@@ -1,15 +1,51 @@
 import React, { useState } from 'react'
 import './Signup.css'
-
+import axios from 'axios';
+import { saveUserInfo } from '../../../common/utils/helpers';
 
 function Signup({ setAuth }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState('');
-  const signupHandler = (e) => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const validateData = (data) => {
+    if (data.name.length < 5 || data.password.length > 10) {
+      setErrorMessage("Username should be 5 to 10 characters");
+      return false;
+    }
+    if (data.name.includes(" ")) {
+      setErrorMessage("Username should not contain spaces");
+      return false;
+    }
+    if (data.password.length < 6) {
+      setErrorMessage("Password should be more than 6 characters");
+      return false;
+    }
+    if (data.password.includes(" ")) {
+      setErrorMessage("Password should not contain spaces");
+      return false;
+    }
+    return true;
+  };
+  const signupHandler = async (e) => {
     e.preventDefault()
-    console.log({ name: name, email: email, password: password })
+    const inputData = { name, email, password }
+    if (!validateData(inputData)) {
+      return;
+    }
+    // api call for signup
+    try {
+      const { data } = await axios.post('/api/users/signup', inputData)
+      alert("User Registration Successfull");
+      setAuth("login");
+      console.log(data)
+      saveUserInfo(data)
+    }
+    catch (err) {
+      const errMsg = err?.response?.data?.message || err?.message;
+      setErrorMessage(errMsg);
+    }
   }
   return (
     <div className='signup-body items-end'>
@@ -47,6 +83,7 @@ function Signup({ setAuth }) {
                     : <p style={{ color: "red", fontSize: "12px", margin: "-7.5px 0px", padding: "0px", marginTop: "-15px" }}>* Password Not Matched</p>
                   : ("")
               }
+              <div className='validate-msg text-red-600 text-center mt-2'>{errorMessage}</div>
             </div>
 
             <div className="signup-btn">

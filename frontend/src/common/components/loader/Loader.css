@@ -1,74 +1,66 @@
-.main {
-	display: flex;
-	justify-content: center;
-	margin-top: 150px;
+.loader {
+	top: 25vh;
+	bottom: 50%;
+	width: 48px;
+	height: 48px;
+	margin: auto;
+	position: relative;
 }
-@keyframes ldio-3ly28f6x01o-o {
-	0% {
-		opacity: 1;
-		transform: translate(0 0);
-	}
-	49.99% {
-		opacity: 1;
-		transform: translate(80px, 0);
-	}
-	50% {
-		opacity: 0;
-		transform: translate(80px, 0);
-	}
-	100% {
-		opacity: 0;
-		transform: translate(0, 0);
-	}
-}
-@keyframes ldio-3ly28f6x01o {
-	0% {
-		transform: translate(0, 0);
-	}
-	50% {
-		transform: translate(80px, 0);
-	}
-	100% {
-		transform: translate(0, 0);
-	}
-}
-.ldio-3ly28f6x01o div {
+
+.loader:before {
+	content: "";
+	width: 48px;
+	height: 5px;
+	background: #f0808050;
 	position: absolute;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
 	top: 60px;
-	left: 20px;
+	left: 0;
+	border-radius: 50%;
+	animation: shadow324 0.5s linear infinite;
 }
-.ldio-3ly28f6x01o div:nth-child(1) {
-	background: #e90c59;
-	animation: ldio-3ly28f6x01o 1s linear infinite;
-	animation-delay: -0.5s;
-}
-.ldio-3ly28f6x01o div:nth-child(2) {
-	background: #46dff0;
-	animation: ldio-3ly28f6x01o 1s linear infinite;
-	animation-delay: 0s;
-}
-.ldio-3ly28f6x01o div:nth-child(3) {
-	background: #e90c59;
-	animation: ldio-3ly28f6x01o-o 1s linear infinite;
-	animation-delay: -0.5s;
-}
-.loadingio-spinner-dual-ball-ru87sy9gr0n {
-	width: 200px;
-	height: 200px;
-	display: inline-block;
-	overflow: hidden;
-}
-.ldio-3ly28f6x01o {
+
+.loader:after {
+	content: "";
 	width: 100%;
 	height: 100%;
-	position: relative;
-	transform: translateZ(0) scale(1);
-	backface-visibility: hidden;
-	transform-origin: 0 0;
+	background: #f08080;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 4px;
+	animation: jump7456 0.5s linear infinite;
 }
-.ldio-3ly28f6x01o div {
-	box-sizing: content-box;
+
+@keyframes jump7456 {
+	15% {
+		border-bottom-right-radius: 3px;
+	}
+
+	25% {
+		transform: translateY(9px) rotate(22.5deg);
+	}
+
+	50% {
+		transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+		border-bottom-right-radius: 40px;
+	}
+
+	75% {
+		transform: translateY(9px) rotate(67.5deg);
+	}
+
+	100% {
+		transform: translateY(0) rotate(90deg);
+	}
+}
+
+@keyframes shadow324 {
+	0%,
+	100% {
+		transform: scale(1, 1);
+	}
+
+	50% {
+		transform: scale(1.2, 1);
+	}
 }

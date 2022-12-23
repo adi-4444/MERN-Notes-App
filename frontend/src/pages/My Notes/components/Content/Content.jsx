@@ -6,9 +6,7 @@ import axios from "axios";
 const Content = () => {
 	const [notes, setNotes] = useState([]);
 	const fetchNotes = async () => {
-		axios
-			.get("http://127.0.0.1:5050/api/notes")
-			.then((res) => setNotes(res.data));
+		axios.get("/api/notes").then((res) => setNotes(res.data));
 	};
 	useEffect(() => {
 		fetchNotes();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./landingpage.css";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login";
@@ -6,12 +6,27 @@ import blob1 from "../../common/assets/blob1.svg";
 import blob2 from "../../common/assets/blob2.svg";
 import blob3 from "../../common/assets/blob3.svg";
 import blob4 from "../../common/assets/blob4.svg";
+import { useNavigate } from "react-router-dom";
+// import Loader from "../../common/components/loader/Loader";
 
 const LandingPage = () => {
+	// const [isLoading, setIsLoading] = useState(false);
 	const [auth, setAuth] = useState("login");
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			navigate("/mynotes");
+		}
+		//eslint-disable-next-line
+	}, []);
 
 	return (
 		<div>
+			{/* {isLoading ? (
+				<Loader />
+			) : ( */}
 			<div className='landing-page'>
 				<div className='design-div'>
 					<div>
@@ -23,13 +38,13 @@ const LandingPage = () => {
 									xmlns='http://www.w3.org/2000/svg'
 									fill='none'
 									viewBox='0 0 24 24'
-									stroke-width='1.5'
+									strokeWidth='1.5'
 									stroke='currentColor'
-									class='w-10 h-10'
+									className='w-10 h-10'
 								>
 									<path
-										stroke-linecap='round'
-										stroke-linejoin='round'
+										strokeLinecap='round'
+										strokeLinejoin='round'
 										d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125'
 									/>
 								</svg>
@@ -37,15 +52,25 @@ const LandingPage = () => {
 						</h1>
 						<h1 className='heading font-semibold text-6xl absolute select-none'>
 							Hey, are you trying to <br /> keep your notes safe
-							<h2 className='sub-heading font-semibold text-4xl'>
+							<p className='sub-heading font-semibold text-4xl'>
 								You are at right place
-							</h2>
+							</p>
 						</h1>
 					</div>
 
 					<div className='forms'>
-						{auth === "login" && <Login setAuth={setAuth} />}
-						{auth === "signup" && <Signup setAuth={setAuth} />}
+						{auth === "login" && (
+							<Login
+								setAuth={setAuth}
+								// setIsLoading={setIsLoading}
+							/>
+						)}
+						{auth === "signup" && (
+							<Signup
+								setAuth={setAuth}
+								// setIsLoading={setIsLoading}
+							/>
+						)}
 					</div>
 
 					<img className='blob1 absolute' src={blob1} alt='.' />
@@ -54,6 +79,7 @@ const LandingPage = () => {
 					<img className='blob4 absolute' src={blob4} alt='.' />
 				</div>
 			</div>
+			{/* )} */}
 		</div>
 	);
 };
