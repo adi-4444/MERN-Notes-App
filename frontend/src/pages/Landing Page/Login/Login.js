@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import './Login.css'
 import { saveUserInfo } from '../../../common/utils/helpers'
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import AuthLoader from '../../../common/components/authLoader/AuthLoader';
 
 function Login({ setAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate()
   const loginDataChangeHandler = (e) => {
     const name = e.target.name;
     if (name === "email") {
@@ -22,21 +25,36 @@ function Login({ setAuth }) {
   const loginHandler = async (e) => {
     e.preventDefault()
     const inputData = { email, password }
+    setLoading(true);
     try {
-      const { data } = await axios.post("/api/users/login",
+      axios.post("/api/users/login",
         inputData
-      )
-      saveUserInfo(data);
+      ).then((res) => {
+        const { data, status } = res;
+        if (status === 200) {
+          console.log(data)
+          saveUserInfo(data)
+          setLoading(false);
+          navigate("/mynotes")
+        }
+      })
+        .catch((err) => {
+          // if failure, i will show an error
+          const errMsg = err?.response?.data?.message || err?.message;
+          setErrorMessage(errMsg);
+          setLoading(false);
+        });
     }
     catch (err) {
       // if failure, i will show an error
       const errMsg = err?.response?.data?.message || err?.message;
       setErrorMessage(errMsg);
+      setLoading(false);
     }
   }
   return (
     <>
-
+      {loading && <AuthLoader />}
       <div className='login_body items-end'>
         <div className="login_wrapper">
 

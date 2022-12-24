@@ -7,10 +7,8 @@ import blob2 from "../../common/assets/blob2.svg";
 import blob3 from "../../common/assets/blob3.svg";
 import blob4 from "../../common/assets/blob4.svg";
 import { useNavigate } from "react-router-dom";
-// import Loader from "../../common/components/loader/Loader";
 
 const LandingPage = () => {
-	// const [isLoading, setIsLoading] = useState(false);
 	const [auth, setAuth] = useState("login");
 	const navigate = useNavigate();
 
@@ -19,14 +17,10 @@ const LandingPage = () => {
 		if (token) {
 			navigate("/mynotes");
 		}
-		//eslint-disable-next-line
-	}, []);
+	}, [navigate]);
 
 	return (
 		<div>
-			{/* {isLoading ? (
-				<Loader />
-			) : ( */}
 			<div className='landing-page'>
 				<div className='design-div'>
 					<div>
@@ -59,18 +53,8 @@ const LandingPage = () => {
 					</div>
 
 					<div className='forms'>
-						{auth === "login" && (
-							<Login
-								setAuth={setAuth}
-								// setIsLoading={setIsLoading}
-							/>
-						)}
-						{auth === "signup" && (
-							<Signup
-								setAuth={setAuth}
-								// setIsLoading={setIsLoading}
-							/>
-						)}
+						{auth === "login" && <Login setAuth={setAuth} />}
+						{auth === "signup" && <Signup setAuth={setAuth} />}
 					</div>
 
 					<img className='blob1 absolute' src={blob1} alt='.' />
@@ -79,7 +63,6 @@ const LandingPage = () => {
 					<img className='blob4 absolute' src={blob4} alt='.' />
 				</div>
 			</div>
-			{/* )} */}
 		</div>
 	);
 };
