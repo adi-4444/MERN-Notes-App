@@ -65,7 +65,7 @@
 	width: 250px;
 	padding: 10px;
 	margin-bottom: 5px;
-	background-color: rgb(233, 233, 233);
+	background-color: rgb(205, 205, 205);
 	/* border: 0.5px solid rgb(243, 238, 238); */
 	transition: all 0.3s ease-in-out;
 }
@@ -79,4 +79,8 @@
 .login_btn > p {
 	margin-top: 5px;
 	text-align: center;
+}
+.error-msg {
+	margin-top: -1rem;
+	margin-bottom: 1rem;
 }

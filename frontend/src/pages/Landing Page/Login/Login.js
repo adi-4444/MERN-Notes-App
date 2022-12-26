@@ -77,7 +77,7 @@ function Login({ setAuth }) {
 
               <div className="login_btn">
                 {errorMessage && (
-                  <div className='text-red-600 text-center mb-1'>
+                  <div className='error-msg text-red-600 text-center mb-1 text-xs'>
                     {errorMessage}
                   </div>
                 )}
