@@ -13,8 +13,7 @@ const MyNotes = () => {
 		if (!token && !name) {
 			navigate("/");
 		}
-		// eslint-disable-next-line
-	}, []);
+	}, [navigate]);
 	return (
 		<div>
 			<Header />

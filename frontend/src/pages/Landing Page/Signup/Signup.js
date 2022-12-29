@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Signup.css'
-import axios from 'axios';
 import AuthLoader from '../../../common/components/authLoader/AuthLoader';
-
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../../../redux/actions/userActions';
+import { useNavigate } from 'react-router-dom'
 function Signup({ setAuth }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  const userRegister = useSelector((state) => state.userRegister)
+  const { loading, error, userInfo } = userRegister
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/mynotes")
+    }
+  }, [navigate, userInfo])
+
   const signupDataChangeHandler = (e) => {
     const name = e.target.name;
     if (name === "name") {
@@ -41,34 +53,14 @@ function Signup({ setAuth }) {
   };
 
   const signupHandler = async (e) => {
-    e.preventDefault()
     const inputData = { name, email, password }
-    setLoading(true)
+    e.preventDefault()
     if (!validateData(inputData)) {
       return;
     }
     // api call for signup
-    try {
-      axios.post('/api/users/signup', inputData)
-        .then((res) => {
-          console.log(res.data)
-          const { status } = res
-          if (status === 201) {
-            setAuth("login");
-            setLoading(false)
-          }
-        })
-        .catch((err) => {
-          const errMsg = err?.response?.data?.message || err?.message;
-          setErrorMessage(errMsg);
-          setLoading(false)
-        });
-    }
-    catch (err) {
-      const errMsg = err?.response?.data?.message || err?.message;
-      setErrorMessage(errMsg);
-      setLoading(false)
-    }
+    dispatch(register(name, email, password))
+
   }
   return (
     <>
@@ -86,7 +78,7 @@ function Signup({ setAuth }) {
               </div>
 
               <div className="form-group">
-                <input type="text" className='form-control' name='email' placeholder="Email" required
+                <input type="email" className='form-control' name='email' placeholder="Email" required
                   value={email} onChange={signupDataChangeHandler} />
                 <label className='form-label'>Email *</label>
               </div>
@@ -108,7 +100,7 @@ function Signup({ setAuth }) {
                       : <p style={{ color: "red", fontSize: "12px", margin: "-7.5px 0px", padding: "0px", marginTop: "-15px" }}>* Password Not Matched</p>
                     : ("")
                 }
-                <div className='validate-msg text-red-600 text-center mt-2 text-xs'>{errorMessage}</div>
+                <div className='validate-msg text-red-600 text-center mt-2 text-xs'>{errorMessage}{error}</div>
               </div>
 
               <div className="signup-btn">

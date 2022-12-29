@@ -9,9 +9,7 @@ import { useEffect } from 'react';
 function Login({ setAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
   const userLogin = useSelector(state => state.userLogin)
   const { loading, errorMessage, userInfo } = userLogin
@@ -29,12 +27,9 @@ function Login({ setAuth }) {
     } else if (name === "password") {
       setPassword(e.target.value);
     }
-
   };
-
   const loginHandler = async (e) => {
     e.preventDefault()
-
     dispatch(login(email, password))
   }
   return (
