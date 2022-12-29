@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import './Login.css'
-import { saveUserInfo } from '../../../common/utils/helpers'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthLoader from '../../../common/components/authLoader/AuthLoader';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../../redux/actions/userActions';
+import { useEffect } from 'react';
 
 function Login({ setAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  const userLogin = useSelector(state => state.userLogin)
+  const { loading, errorMessage, userInfo } = userLogin
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/mynotes")
+    }
+  }, [navigate, userInfo])
+
   const loginDataChangeHandler = (e) => {
     const name = e.target.name;
     if (name === "email") {
@@ -19,38 +29,13 @@ function Login({ setAuth }) {
     } else if (name === "password") {
       setPassword(e.target.value);
     }
-    setErrorMessage("");
+
   };
 
   const loginHandler = async (e) => {
     e.preventDefault()
-    const inputData = { email, password }
-    setLoading(true);
-    try {
-      axios.post("/api/users/login",
-        inputData
-      ).then((res) => {
-        const { data, status } = res;
-        if (status === 200) {
-          console.log(data)
-          saveUserInfo(data)
-          setLoading(false);
-          navigate("/mynotes")
-        }
-      })
-        .catch((err) => {
-          // if failure, i will show an error
-          const errMsg = err?.response?.data?.message || err?.message;
-          setErrorMessage(errMsg);
-          setLoading(false);
-        });
-    }
-    catch (err) {
-      // if failure, i will show an error
-      const errMsg = err?.response?.data?.message || err?.message;
-      setErrorMessage(errMsg);
-      setLoading(false);
-    }
+
+    dispatch(login(email, password))
   }
   return (
     <>

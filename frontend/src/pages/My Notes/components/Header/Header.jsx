@@ -1,9 +1,20 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { logout } from "../../../../common/utils/helpers";
 import "./header.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../../redux/actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+	const logoutHandler = () => {
+		dispatch(logout());
+		navigate("/");
+	};
+
 	return (
 		<div>
 			<div className='navbar-wrapper w-full flex items-center p-2 justify-around shadow-xs'>
@@ -115,7 +126,7 @@ const Header = () => {
 														? "bg-violet-500 text-white"
 														: "text-gray-900"
 												} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-												onClick={logout}
+												onClick={logoutHandler}
 											>
 												Log Out
 											</button>
