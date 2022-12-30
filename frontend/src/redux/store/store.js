@@ -10,11 +10,13 @@ const reducer = combineReducers({
 })
 
 const localUserName = localStorage.getItem("name") ? localStorage.getItem("name") : null
+const localUserEmail = localStorage.getItem("email") ? localStorage.getItem("email") : null
 const localUserToken = localStorage.getItem("token") ? localStorage.getItem("token") : null
 
 const initialState = {
 	userLogin: {
 		name: localUserName,
+		email: localUserEmail,
 		token: localUserToken
 	}
 };
