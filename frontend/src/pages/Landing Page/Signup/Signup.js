@@ -10,17 +10,18 @@ function Signup({ setAuth }) {
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate()
 
   const dispatch = useDispatch()
   const userRegister = useSelector((state) => state.userRegister)
   const { loading, error, userInfo } = userRegister
+  // const userLogin = useSelector((state) => state.userLogin)
+  // const { userInfo } = userLogin
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/mynotes")
+      setAuth("login")
     }
-  }, [navigate, userInfo])
+  }, [userInfo])
 
   const signupDataChangeHandler = (e) => {
     const name = e.target.name;
@@ -37,10 +38,6 @@ function Signup({ setAuth }) {
   };
 
   const validateData = (data) => {
-    if (data.name.includes(" ")) {
-      setErrorMessage("Name should not contain spaces");
-      return false;
-    }
     if (data.password.length < 6) {
       setErrorMessage("Password should be more than 6 characters");
       return false;
@@ -72,7 +69,7 @@ function Signup({ setAuth }) {
             <h2 className='text-xl'>Signup</h2>
             <form onSubmit={signupHandler}>
               <div className="form-group">
-                <input type="text" className='form-control' name='name' placeholder="Name" autoFocus required
+                <input type="text" className='name-input form-control' name='name' placeholder="Name" autoFocus required
                   value={name} onChange={signupDataChangeHandler} />
                 <label className='form-label'>Name *</label>
               </div>

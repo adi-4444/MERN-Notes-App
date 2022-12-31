@@ -27,7 +27,7 @@
 .icon-edit {
 	cursor: pointer;
 	color: #4caf50;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.25s ease-in-out;
 	padding: 5px;
 	background-color: #efefef;
 	border-radius: 50%;
@@ -35,7 +35,7 @@
 .icon-delete {
 	cursor: pointer;
 	color: #d11a2a;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.25s ease-in-out;
 	padding: 5px;
 	background-color: #efefef;
 	border-radius: 50%;

@@ -7,12 +7,12 @@ const getNotes = asyncHandler(async (req, res) => {
 })
 
 const createNote = asyncHandler(async (req, res) => {
-   const { title, content, category } = req.body
-   if (!title || !content || !category) {
+   const { title, content } = req.body
+   if (!title || !content) {
       res.status(400)
       throw new Error("Please Fiil all the Feilds")
    } else {
-      const note = new Note({ user: req.user._id, title, content, category })
+      const note = new Note({ user: req.user._id, title, content })
       const createNote = await note.save()
       res.status(201).json(createNote)
    }
@@ -29,7 +29,7 @@ const getNoteById = asyncHandler(async (req, res) => {
 })
 
 const updateNote = asyncHandler(async (req, res) => {
-   const { title, content, category } = req.body
+   const { title, content } = req.body
    const note = await Note.findById(req.params.id)
    if (note.user.toString() !== req.user._id.toString()) {
       throw new Error("You can't perform this action")
@@ -37,7 +37,6 @@ const updateNote = asyncHandler(async (req, res) => {
    if (note) {
       note.title = title
       note.content = content
-      note.category = category
       const updatedNote = await note.save()
       res.json(updatedNote)
    } else {

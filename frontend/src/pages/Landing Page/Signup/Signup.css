@@ -25,6 +25,9 @@
 	margin-bottom: 1em;
 	transition: all 0.3s;
 }
+.name-input {
+	text-transform: capitalize;
+}
 .form-label {
 	font-size: 1em;
 	color: #aaa;

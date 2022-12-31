@@ -4,7 +4,7 @@ import "./note.css";
 const Note = ({ notes }) => {
 	return (
 		<div className='note-wrapper'>
-			{notes.map((note) => (
+			{notes?.map((note) => (
 				<div className='a-note' key={note._id}>
 					<h2 className='text-center text-lg font-semibold my-2 text-blue-600'>
 						{note.title}

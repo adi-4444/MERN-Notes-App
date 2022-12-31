@@ -4,15 +4,17 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import "./mynotes.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MyNotes = () => {
 	const navigate = useNavigate();
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
 	useEffect(() => {
-		let token = localStorage.getItem("token");
-		let name = localStorage.getItem("email");
-		if (!token && !name) {
+		if (!userInfo) {
 			navigate("/");
 		}
+		// eslint-disable-next-line
 	}, [navigate]);
 	return (
 		<div>

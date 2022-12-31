@@ -1,6 +1,5 @@
 import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants";
 import axios from 'axios'
-import { saveUserInfo } from "../../common/utils/helpers";
 
 export const login = (email, password) => async (dispatch) => {
    const inputData = { email, password }
@@ -12,7 +11,7 @@ export const login = (email, password) => async (dispatch) => {
          const { data, status } = res;
          if (status === 200) {
             dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
-            saveUserInfo(data)
+            localStorage.setItem("userInfo", JSON.stringify(data));
          }
       })
          .catch((err) => {
@@ -46,6 +45,7 @@ export const register = (name, email, password) => async (dispatch) => {
             const { data, status } = res
             if (status === 201) {
                alert(`${data.name} You are successfully Registered. Please Login`)
+               window.location.reload()
                dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
             }
          })
