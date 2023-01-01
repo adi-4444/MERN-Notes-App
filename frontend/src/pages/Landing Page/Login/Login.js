@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
-import AuthLoader from '../../../common/components/authLoader/AuthLoader';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../../redux/actions/userActions';
 import { useEffect } from 'react';
+import AuthLoader2 from '../../../common/components/authLoader/AuthLoader2';
 
 function Login({ setAuth }) {
   const [email, setEmail] = useState('');
@@ -34,7 +35,7 @@ function Login({ setAuth }) {
   }
   return (
     <>
-      {loading && <AuthLoader />}
+      {loading && <AuthLoader2 />}
       <div className='login_body items-end'>
         <div className="login_wrapper">
 

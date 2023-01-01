@@ -3,7 +3,7 @@ import './Signup.css'
 import AuthLoader from '../../../common/components/authLoader/AuthLoader';
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../../../redux/actions/userActions';
-import { useNavigate } from 'react-router-dom'
+
 function Signup({ setAuth }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +21,8 @@ function Signup({ setAuth }) {
     if (userInfo) {
       setAuth("login")
     }
-  }, [userInfo])
+    //eslint-disable-next-line
+  }, [userInfo, dispatch])
 
   const signupDataChangeHandler = (e) => {
     const name = e.target.name;

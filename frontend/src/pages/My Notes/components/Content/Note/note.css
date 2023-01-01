@@ -54,3 +54,26 @@
 ::-webkit-scrollbar-thumb {
 	background: #6f6be0;
 }
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: rgb(36, 36, 36);
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 50%;
+	margin-left: -60px;
+	transition: all 0.25s ease-in-out;
+}
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}

@@ -1,4 +1,4 @@
-.chaotic-orbit {
+.chaotic {
 	--uib-size: 25px;
 	--uib-speed: 1.5s;
 	--uib-color: black;
@@ -9,28 +9,27 @@
 	height: var(--uib-size);
 	width: var(--uib-size);
 	animation: rotate936 calc(var(--uib-speed) * 1.667) infinite linear;
-	bottom: 10rem;
-	right: 14rem;
-	z-index: 99;
+	top: 40%;
+	left: 50%;
 }
 
-.chaotic-orbit::before,
-.chaotic-orbit::after {
+.chaotic::before,
+.chaotic::after {
 	content: "";
 	position: absolute;
-	height: 60%;
-	width: 60%;
+	height: 70%;
+	width: 70%;
 	border-radius: 50%;
 	background-color: var(--uib-color);
 	will-change: transform;
 	flex-shrink: 0;
 }
 
-.chaotic-orbit::before {
+.chaotic::before {
 	animation: orbit var(--uib-speed) linear infinite;
 }
 
-.chaotic-orbit::after {
+.chaotic::after {
 	animation: orbit var(--uib-speed) linear calc(var(--uib-speed) / -2)
 		infinite;
 }

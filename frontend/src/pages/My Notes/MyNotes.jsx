@@ -10,12 +10,12 @@ const MyNotes = () => {
 	const navigate = useNavigate();
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
+
 	useEffect(() => {
 		if (!userInfo) {
 			navigate("/");
 		}
-		// eslint-disable-next-line
-	}, [navigate]);
+	}, [userInfo, navigate]);
 	return (
 		<div>
 			<Header />
