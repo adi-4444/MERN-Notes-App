@@ -16,6 +16,7 @@ const MyNotes = () => {
 			navigate("/");
 		}
 	}, [userInfo, navigate]);
+
 	return (
 		<div>
 			<Header />

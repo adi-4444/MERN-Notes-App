@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createNote } from "../../../../../../redux/actions/notesActions";
-import "./createnote.css";
+import { updateNote } from "../../../../../../redux/actions/notesActions";
+import "./updatenote.css";
 
-const CreateNote = ({ closeCreateModel }) => {
-	const [title, setTitle] = useState("");
-	const [content, setContent] = useState("");
-
+const UpdateNote = (props) => {
+	const { closeUpdateModel, selectedNoteData, setSelectedNoteData } = props;
+	const { _id, title, content } = selectedNoteData;
 	const dispatch = useDispatch();
-	const noteCreate = useSelector((state) => state.noteCreate);
-	const { errorMessage } = noteCreate;
+	const noteUpdate = useSelector((state) => state.noteUpdate);
+	const { errorMessage } = noteUpdate;
 
-	const resetStates = () => {
-		setTitle("");
-		setContent("");
+	const noteChange = (e) => {
+		const currentData = { ...selectedNoteData };
+		if (e.target.name === "title") {
+			currentData.title = e.target.value;
+		} else if (e.target.name === "content") {
+			currentData.content = e.target.value;
+		}
+		setSelectedNoteData(currentData);
 	};
-	const submitHandler = (e) => {
+	const updateHandler = (e) => {
 		e.preventDefault();
-		if (!title || !content) return;
-		dispatch(createNote(title, content));
-		resetStates();
-		closeCreateModel();
+		if (!_id || !title || !content) return;
+		dispatch(updateNote(_id, title, content));
+		closeUpdateModel();
 	};
 	return (
 		<div className='fixed inset-0 z-10 overflow-y-auto'>
@@ -30,10 +33,10 @@ const CreateNote = ({ closeCreateModel }) => {
 					<div className='mt-3'>
 						<div className='mt-2 text-center'>
 							<h4 className='text-lg font-medium text-gray-800'>
-								Create New Note
+								Update Note
 							</h4>
 
-							<form className='mt-4' onSubmit={submitHandler}>
+							<form className='mt-4' onSubmit={updateHandler}>
 								<div className='text-sm text-gray-500'>
 									Title
 								</div>
@@ -46,7 +49,7 @@ const CreateNote = ({ closeCreateModel }) => {
 									placeholder='Enter Note Title'
 									className='mt-3 w-10/12 px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
 									autoComplete='off'
-									onChange={(e) => setTitle(e.target.value)}
+									onChange={noteChange}
 								/>
 								<div className='text-sm mt-3 text-gray-500'>
 									Content
@@ -59,7 +62,7 @@ const CreateNote = ({ closeCreateModel }) => {
 									placeholder='Enter Note Content'
 									className='mt-3 w-10/12 h-14 px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
 									autoComplete='off'
-									onChange={(e) => setContent(e.target.value)}
+									onChange={noteChange}
 								/>
 								<div className='text-red-400 mt-2'>
 									{errorMessage && errorMessage}
@@ -68,7 +71,7 @@ const CreateNote = ({ closeCreateModel }) => {
 									<button
 										type='button'
 										className='text-sm font-medium text-black capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/3 sm:mx-5 dark:text-black dark:border-gray-700 dark:hover:bg-gray-300 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40'
-										onClick={closeCreateModel}
+										onClick={closeUpdateModel}
 									>
 										Cancel
 									</button>
@@ -88,4 +91,4 @@ const CreateNote = ({ closeCreateModel }) => {
 	);
 };
 
-export default CreateNote;
+export default UpdateNote;

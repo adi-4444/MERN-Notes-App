@@ -1,10 +1,8 @@
-import React from 'react'
-import './contentloader.css'
+import React from "react";
+import "./contentloader.css";
 
 const ContentLoader = () => {
-   return (
-      <div class="chaotic"></div>
-   )
-}
+	return <div className='chaotic'></div>;
+};
 
 export default ContentLoader;

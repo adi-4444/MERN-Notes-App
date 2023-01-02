@@ -1,12 +1,27 @@
 import React from "react";
+
 import "./note.css";
 
-const Note = ({ notes }) => {
+const Note = ({
+	notes,
+	openUpdateModel,
+	setSelectedNoteData,
+	openDeleteModel,
+	setSelectedNote,
+}) => {
+	const open = (note) => {
+		openUpdateModel();
+		setSelectedNoteData(note);
+	};
+	const del = (note) => {
+		openDeleteModel();
+		setSelectedNote(note);
+	};
 	return (
 		<div className='note-wrapper'>
 			{notes?.map((note) => (
 				<div className='a-note' key={note._id}>
-					<h2 className='text-center text-lg font-semibold my-2 text-blue-600'>
+					<h2 className='text-center text-lg font-semibold my-2 text-blue-600 w-full break-words'>
 						{note.title}
 					</h2>
 					<p className='note-discription'>{note.content}</p>
@@ -18,6 +33,7 @@ const Note = ({ notes }) => {
 							preserveAspectRatio='xMidYMid meet'
 							viewBox='0 0 24 24'
 							className='icon-edit'
+							onClick={() => open(note)}
 						>
 							<path
 								fill='currentColor'
@@ -39,6 +55,7 @@ const Note = ({ notes }) => {
 							preserveAspectRatio='xMidYMid meet'
 							viewBox='0 0 24 24'
 							className='icon-delete'
+							onClick={() => del(note)}
 						>
 							<path
 								fill='currentColor'
