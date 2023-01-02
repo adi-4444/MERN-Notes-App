@@ -9,7 +9,7 @@ import CreateNote from "./Modals/Create/CreateNote";
 import UpdateNote from "./Modals/Update/UpdateNote";
 import DeleteNote from "./Modals/Delete/DeleteNote";
 
-const Content = () => {
+const Content = ({ search }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -87,6 +87,7 @@ const Content = () => {
 				)}
 				{listLoading && <ContentLoader />}
 				<Note
+					search={search}
 					notes={notes}
 					openUpdateModel={openUpdateModel}
 					setSelectedNoteData={setSelectedNoteData}

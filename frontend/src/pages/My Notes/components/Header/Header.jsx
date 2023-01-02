@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -41,9 +41,10 @@ const Header = () => {
 				<span className='w-full md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex'>
 					<input
 						type='search'
-						name='serch'
+						name='search'
 						placeholder='Search'
 						className='flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none'
+						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</span>
 
