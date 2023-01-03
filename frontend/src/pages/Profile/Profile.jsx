@@ -45,15 +45,8 @@ const Profile = () => {
 		setErrorMessage("");
 	};
 	const validateData = (data) => {
-		if (data.password === data.confirmpassword) {
-			return true;
-		}
-		if (data.password.length < 6) {
-			setErrorMessage("Password should be more than 6 characters");
-			return false;
-		}
-		if (data.password.includes(" ")) {
-			setErrorMessage("Password should not contain spaces");
+		if (data.password !== data.confirmpassword) {
+			setErrorMessage("Password Not Matched");
 			return false;
 		}
 		return true;
@@ -126,35 +119,6 @@ const Profile = () => {
 							<label className='form-label'>
 								Confirm Password *
 							</label>
-							{password && confirmpassword ? (
-								password === confirmpassword ? (
-									<p
-										style={{
-											color: "#1bab6e",
-											fontSize: "12px",
-											margin: "-7.5px 0px",
-											padding: "0px",
-											marginTop: "-15px",
-										}}
-									>
-										* Password Matched
-									</p>
-								) : (
-									<p
-										style={{
-											color: "red",
-											fontSize: "12px",
-											margin: "-7.5px 0px",
-											padding: "0px",
-											marginTop: "-15px",
-										}}
-									>
-										* Password Not Matched
-									</p>
-								)
-							) : (
-								""
-							)}
 						</div>
 
 						{errorMessage && (

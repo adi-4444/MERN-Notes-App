@@ -80,7 +80,9 @@ const Header = ({ setSearch }) => {
 					>
 						<div>
 							<Menu.Button className='text-white capitalize hover:bg-white hover:text-black'>
-								{userInfo ? userInfo?.name : "Login"}
+								{userInfo
+									? userInfo?.name.split(" ")[0]
+									: "Login"}
 							</Menu.Button>
 						</div>
 						<Transition

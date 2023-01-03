@@ -77,7 +77,7 @@ const Content = ({ search }) => {
 			</h1>
 			<div className='content-wrapper'>
 				<button
-					className='bg-blue-500 p-2 rounded-2xl text-center ml-7'
+					className='btn-create bg-gray-200 p-2 rounded-2xl text-center ml-7'
 					onClick={openCreateModel}
 				>
 					Create New Note

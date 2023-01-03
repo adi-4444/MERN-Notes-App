@@ -1,4 +1,4 @@
-import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants";
+import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_DONE, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants";
 import axios from 'axios'
 
 export const login = (email, password) => async (dispatch) => {
@@ -75,6 +75,8 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       const { data } = await axios.post('/api/users/profile', user, config)
 
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data })
+
+      setTimeout(() => dispatch({ type: USER_UPDATE_DONE, payload: data }), 3000)
 
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
 
