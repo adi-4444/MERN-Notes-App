@@ -32,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
       throw new Error("Error Occurred !")
    }
 })
+
 const authUser = asyncHandler(async (req, res) => {
    const { email, password } = req.body;
 
@@ -51,4 +52,32 @@ const authUser = asyncHandler(async (req, res) => {
    }
 })
 
-module.exports = { registerUser, authUser }
+const userProfileUpdate = asyncHandler(async (req, res) => {
+   const { email } = req.body;
+   const user = await User.findById(req.user._id)
+   const userExists = await User.findOne({ email })
+   if (userExists) {
+      res.status(400)
+      throw new Error("User Email Already Exists")
+   }
+   if (user.email === userExists) return
+   if (user) {
+      user.name = req.body.name || user.name
+      user.email = req.body.email || user.email
+      if (req.body.password) {
+         user.password = req.body.password
+      }
+      const updatedUser = await user.save()
+      res.json({
+         _id: updatedUser._id,
+         name: updatedUser.name,
+         email: updatedUser.email,
+         token: generateToken(updatedUser._id)
+      })
+   } else {
+      res.send(404)
+      throw new Error("User Not Found")
+   }
+})
+
+module.exports = { registerUser, authUser, userProfileUpdate }
