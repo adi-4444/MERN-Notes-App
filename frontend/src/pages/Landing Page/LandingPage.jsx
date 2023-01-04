@@ -24,9 +24,9 @@ const LandingPage = () => {
 			<div className='landing-page'>
 				<div className='design-div'>
 					<div>
-						<h1 className='font-semibold text-yellow-300 text-4xl text-center p-2 flex items-center justify-center gap-5'>
+						<h1 className='main-heading font-semibold text-yellow-300 text-4xl text-center p-2 flex items-center justify-center gap-5'>
 							<div>Welcome to Note Safe</div>
-							<div>
+							<div className='logo-icon-div'>
 								{" "}
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -34,7 +34,7 @@ const LandingPage = () => {
 									viewBox='0 0 24 24'
 									strokeWidth='1.5'
 									stroke='currentColor'
-									className='w-10 h-10'
+									className='w-10 h-10 logo-icon'
 								>
 									<path
 										strokeLinecap='round'
@@ -45,7 +45,7 @@ const LandingPage = () => {
 							</div>
 						</h1>
 						<h1 className='heading font-semibold text-6xl absolute select-none'>
-							Hey, are you trying to <br /> keep your notes safe
+							Hey, are you trying to keep your notes safe
 							<p className='sub-heading font-semibold text-4xl'>
 								You are at right place
 							</p>

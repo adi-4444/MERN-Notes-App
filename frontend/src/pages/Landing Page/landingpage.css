@@ -9,6 +9,7 @@
 	top: 8rem;
 	left: 5rem;
 	letter-spacing: 3px;
+	width: 550px;
 }
 
 .sub-heading {
@@ -28,4 +29,52 @@
 .blob4 {
 	left: 15rem;
 	bottom: 0rem;
+}
+@media only screen and (max-width: 1200px) {
+	.heading {
+		width: 500px;
+	}
+}
+@media only screen and (max-width: 1024px) {
+	.heading {
+		width: 400px;
+		font-size: 2rem;
+		word-wrap: break-word;
+	}
+}
+@media only screen and (max-width: 846px) {
+	.heading {
+		width: 300px;
+		font-size: 2rem;
+		word-wrap: break-word;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.heading {
+		top: 10rem;
+		width: 150px;
+		font-size: 1.5rem;
+	}
+	.sub-heading {
+		font-size: 1.3rem;
+		margin-top: 2rem;
+	}
+}
+@media only screen and (max-width: 667px) {
+	.heading {
+		display: none;
+	}
+	.sub-heading {
+		display: none;
+	}
+}
+@media only screen and (max-width: 480px) {
+	.main-heading {
+		width: 350px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.logo-icon {
+		display: none;
+	}
 }
