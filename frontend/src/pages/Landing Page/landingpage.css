@@ -4,6 +4,9 @@
 	height: 90vh;
 	border-radius: 0% 0% 96% 0% / 0% 1% 71% 0%;
 }
+.sm-title {
+	display: none;
+}
 .heading {
 	color: #fff;
 	top: 8rem;
@@ -75,12 +78,31 @@
 	}
 }
 @media only screen and (max-width: 480px) {
+	.design-div {
+		width: 100%;
+		height: 90vh;
+	}
 	.main-heading {
 		width: 350px;
 		margin-left: auto;
 		margin-right: auto;
 	}
 	.logo-icon {
-		display: none;
+		width: 2rem;
+		height: 2rem;
+	}
+	.logo-icon-div {
+		position: absolute;
+		right: 6rem;
+		top: 3rem;
+	}
+	.sm-title {
+		position: absolute;
+		display: block;
+		font-size: large;
+		width: 250px;
+		top: 7rem;
+		color: white;
+		font-weight: bold;
 	}
 }

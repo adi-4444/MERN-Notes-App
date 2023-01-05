@@ -14,15 +14,18 @@ const Header = ({ setSearch }) => {
 		dispatch(logout());
 		navigate("/");
 	};
+	const myNotes = () => {
+		navigate("/mynotes");
+	};
 	const profileHandler = () => {
 		navigate("/myprofile");
 	};
 	return (
 		<div>
-			<div className='navbar-wrapper w-full flex items-center p-2 justify-around shadow-xs'>
+			<div className='navbar-wrapper w-full flex p-2 justify-around shadow-xs'>
 				<a
 					href='/mynotes'
-					className='flex items-center gap-2 ml-8 text-2xl font-semibold text-yellow-300 md:flex'
+					className='logo flex items-center gap-2 ml-8 text-2xl font-semibold text-yellow-300 md:flex'
 				>
 					<h1>Note Safe</h1>
 					<svg
@@ -40,43 +43,28 @@ const Header = ({ setSearch }) => {
 						/>
 					</svg>
 				</a>
-
-				<span className='w-full md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex'>
-					<input
-						type='search'
-						name='search'
-						placeholder='Search'
-						className='flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none'
-						onChange={(e) => setSearch(e.target.value)}
-					/>
-				</span>
-
-				<div className='flex flex-row-reverse text-white mr-4 ml-4 md:hidden'>
-					<button>
-						<svg
-							width='20'
-							height='20'
-							fill='currentColor'
-							className='h-8 w-8'
-							viewBox='0 0 1792 1792'
-							xmlns='http://www.w3.org/2000/svg'
-						>
-							<path d='M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z'></path>
-						</svg>
-					</button>
+				<div className='search-div flex items-center justify-between gap-3'>
+					<span className='search-span md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex'>
+						<input
+							type='search'
+							name='search'
+							placeholder='Search'
+							className='search-input flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none'
+							onChange={(e) => setSearch(e.target.value)}
+						/>
+					</span>
 				</div>
-
 				<div className='flex items-center gap-8 mr-5 md:flex'>
 					<a
 						href='/mynotes'
-						className='ml-8 mr-8 text-lg text-white hidden md:flex'
+						className='mynotes-menu ml-8 mr-8 text-lg text-white'
 					>
 						My Notes
 					</a>
 
 					<Menu
 						as='div'
-						className='relative inline-block text-center'
+						className='name-menu relative inline-block text-center'
 					>
 						<div>
 							<Menu.Button className='text-white capitalize hover:bg-white hover:text-black'>
@@ -94,8 +82,22 @@ const Header = ({ setSearch }) => {
 							leaveFrom='transform opacity-100 scale-100'
 							leaveTo='transform opacity-0 scale-95'
 						>
-							<Menu.Items className='absolute items mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+							<Menu.Items className='absolute items mt-2 mr-8 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
 								<div className='px-1 py-1 '>
+									<Menu.Item>
+										{({ active }) => (
+											<button
+												className={`my-notes bg-white hover:bg-indigo-500 ${
+													active
+														? "bg-indigo-500 text-white"
+														: "text-gray-900"
+												} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+												onClick={myNotes}
+											>
+												My Notes
+											</button>
+										)}
+									</Menu.Item>
 									<Menu.Item>
 										{({ active }) => (
 											<button

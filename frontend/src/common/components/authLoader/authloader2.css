@@ -9,7 +9,7 @@
 	height: var(--uib-size);
 	width: var(--uib-size);
 	animation: rotate936 calc(var(--uib-speed) * 1.667) infinite linear;
-	bottom: 15rem;
+	bottom: 10rem;
 	right: 14rem;
 	z-index: 99;
 }
@@ -149,5 +149,12 @@
 	100% {
 		transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
 		opacity: 0.65;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.load {
+		bottom: 7rem;
+		right: 11.5rem;
 	}
 }

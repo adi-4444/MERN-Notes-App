@@ -10,3 +10,10 @@
 	background: #504be5;
 	color: #fff;
 }
+@media only screen and (max-width: 480px) {
+	.btn-create {
+		background: rgb(86, 89, 245);
+		color: #fff;
+		margin-left: 1rem;
+	}
+}

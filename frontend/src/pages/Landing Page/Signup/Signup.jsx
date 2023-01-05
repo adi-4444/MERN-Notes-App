@@ -59,7 +59,6 @@ function Signup({ setAuth }) {
 		// api call for signup
 		dispatch(register(name, email, password));
 	};
-
 	return (
 		<>
 			{loading && <AuthLoader />}

@@ -43,6 +43,9 @@ const LandingPage = () => {
 									/>
 								</svg>
 							</div>
+							<div className='sm-title'>
+								Wnat to Keep you note safe
+							</div>
 						</h1>
 						<h1 className='heading font-semibold text-6xl absolute select-none'>
 							Hey, are you trying to keep your notes safe
