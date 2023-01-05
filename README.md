@@ -2,6 +2,8 @@
 
 This project was created with Mongo DB, Express JS, React JS and Node JS
 
+used tailwind css for styling.
+
 ## To run this app locally clone this repo
 
 In the project directory, you can run:
@@ -45,6 +47,6 @@ now the app will work directy on [http://localhost:5050](http://localhost:5050)
 
 ### this app is currently hosted on render.com
 
-which is free hosting site will work for backend and frontend `[https://mern-notes-app-w9ko.onrender.com/](https://mern-notes-app-w9ko.onrender.com/)`
+which is free hosting site will work for backend and frontend [https://mern-notes-app-w9ko.onrender.com/](https://mern-notes-app-w9ko.onrender.com/)
 
 This site is hosted as free tier and will be in sleep after 15 min of inactivity so if you visiting for first time then please wait for 1.5 min 3 min to wake the server and for registration and login it will take some time to process in DB please bear some time with it.
