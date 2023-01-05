@@ -42,3 +42,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 To deploy make changes to `process.env.NODE_ENV === "development"` to `process.env.NODE_ENV === "production"`
 
 now the app will work directy on [http://localhost:5050](http://localhost:5050)
+
+### this app is currently hosted on render.com
+
+which is free hosting site will work for backend and frontend `[https://mern-notes-app-w9ko.onrender.com/](https://mern-notes-app-w9ko.onrender.com/)`
+
+This site is hosted as free tier and will be in sleep after 15 min of inactivity so if you visiting for first time then please wait for 1.5 min 3 min to wake the server and for registration and login it will take some time to process in DB please bear some time with it.
