@@ -3,8 +3,11 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "server.js",
+	"engines": {
+		"node": "18.x"
+	},
 	"scripts": {
-		"start": "nodemon backend/server.js",
+		"start": "node backend/server.js",
 		"client": "npm start --prefix frontend",
 		"dev": "concurrently \"npm start\" \"npm run client\""
 	},
